@@ -9,12 +9,18 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!' + '<br />' +'<TABLE><TR><TD> Id </TD><TD>'+response.id+'</TD></TR><TR> <TD> Birthday </TD> <TD>'+response.birthday+'</TD> </TR><TR> <TD> Email </TD> <TD>'+response.email+'</TD> </TR> <TR> <TD> Gender </TD> <TD>'+response.gender+'</TD> </TR></TABLE> <br />';
 
-        FB.api('/' + location.id, {
+        /*FB.api('/' + location.id, {
             fields: 'location'
         }, function(locationResponse) {
             console.log(locationResponse); //will print your desired location object
-        }); 
+        });*/ 
 
-      });
-
+        console.log('Successfully called me/friends');
+        FB.api('/me/friends', {
+          fields:"id"},
+          function(friendsResponse) {
+            console.log('Inside function');
+            console.log(friendsResponse);
+          });
+        });
     }
